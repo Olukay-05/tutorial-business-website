@@ -26,7 +26,7 @@ const Testimonials = () => {
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="heading-section text-foreground mb-4">
             What Parents Say
           </h2>
@@ -40,7 +40,8 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <Card 
               key={index}
-              className="relative bg-card backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              className="relative bg-card backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 animate-fade-in-up"
+              style={{ animationDelay: `${index * 150}ms` }}
             >
               <CardContent className="p-8">
                 {/* Quote Icon */}
@@ -91,8 +92,8 @@ const Testimonials = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="inline-flex flex-col items-center space-y-4 bg-card/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
+        <div className="text-center mt-16 animate-fade-in-up">
+          <div className="inline-flex flex-col items-center space-y-4 bg-card/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105">
             <p className="body-large text-card-foreground font-medium">
               Join our community of successful families
             </p>

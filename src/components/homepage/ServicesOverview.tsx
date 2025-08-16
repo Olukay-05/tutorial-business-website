@@ -39,10 +39,13 @@ const ServicesOverview = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-primary/5 border-b border-border">
+    <section
+      id="services"
+      className="py-20 bg-primary/5 border-b border-border"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="heading-section text-foreground mb-4">Our Services</h2>
           <p className="body-large text-muted-foreground max-w-2xl mx-auto">
             Tailored educational support designed to unlock every child&apos;s
@@ -54,16 +57,25 @@ const ServicesOverview = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {services.map((service, index) => {
             const IconComponent = service.icon;
+            // For tablet screens (md), center the third card (index 2)
+            const isThirdCardOnTablet =
+              index === 3
+                ? "md:col-start-1 md:col-end-3 md:mx-auto md:max-w-sm"
+                : "";
+
             return (
               <Card
                 key={index}
-                className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0 shadow-lg bg-card backdrop-blur-sm"
+                className={`group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0 shadow-lg bg-card backdrop-blur-sm animate-fade-in-up ${isThirdCardOnTablet}`}
+                style={{ animationDelay: `${index * 100}ms` }}
               >
                 <CardHeader className="text-center pb-4">
                   <div
                     className={`w-16 h-16 mx-auto mb-4 rounded-2xl ${service.bgColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
                   >
-                    <IconComponent className={`w-8 h-8 ${service.color} transition-colors duration-300`} />
+                    <IconComponent
+                      className={`w-8 h-8 ${service.color} transition-colors duration-300`}
+                    />
                   </div>
                   <CardTitle className="heading-card text-card-foreground group-hover:text-primary transition-colors duration-300">
                     {service.title}
@@ -80,8 +92,8 @@ const ServicesOverview = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg">
+        <div className="text-center mt-16 animate-fade-in-up">
+          <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-105">
             <div className="text-left">
               <p className="body-regular text-card-foreground mb-2">
                 Ready to get started?

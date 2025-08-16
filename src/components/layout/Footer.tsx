@@ -47,7 +47,7 @@ const Footer = () => {
                 Bloomwise Tutoring
               </h3>
               <p className="body-regular text-footer-text leading-relaxed max-w-md">
-                Expert 11+ and SEN tutoring by Sister Tope. Personalized
+                Expert 11+ and SEN tutoring by Temitope Adeniyi. Personalized
                 learning plans for confident, successful students.
               </p>
             </div>

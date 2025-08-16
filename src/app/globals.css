@@ -46,17 +46,70 @@
 
 @variant dark (&:is(.dark *));
 
+/* Dark mode theme variables */
+.dark {
+  --bloomwise-primary: #3b82f6; /* Lighter blue for dark mode */
+  --bloomwise-success: #22c55e; /* Lighter green for dark mode */
+  --bloomwise-warning: #fbbf24; /* Lighter amber for dark mode */
+  --bloomwise-cream: #1e293b; /* Dark background */
+  --bloomwise-dark: #f8fafc; /* Light text for dark mode */
+  --footer-text: #64748b;
+
+  /* Map dark theme to Tailwind tokens */
+  --color-background: var(--bloomwise-cream);
+  --color-foreground: var(--bloomwise-dark);
+  
+  --color-card: #334155;
+  --color-card-foreground: var(--bloomwise-dark);
+  
+  --color-popover: #334155;
+  --color-popover-foreground: var(--bloomwise-dark);
+  
+  --color-primary: var(--bloomwise-primary);
+  --color-primary-foreground: var(--bloomwise-cream);
+  
+  --color-secondary: var(--bloomwise-success);
+  --color-secondary-foreground: var(--bloomwise-cream);
+  
+  --color-accent: var(--bloomwise-warning);
+  --color-accent-foreground: var(--bloomwise-cream);
+  
+  --color-muted: #475569;
+  --color-muted-foreground: #94a3b8;
+  
+  --color-destructive: #ef4444;
+  --color-border: #475569;
+  --color-input: #475569;
+  --color-ring: var(--bloomwise-primary);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
-
+  
   /* Explicitly define the footer text color */
   .text-footer-text {
     color: var(--footer-text);
+  }
+}
+
+@layer components {
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  @keyframes fade-in-up {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
