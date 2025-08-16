@@ -1,26 +1,149 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --radius: 0.625rem;
+
+  /* 🌟 Brand Colors */
+  --bloomwise-primary: #2563eb; /* Primary Blue */
+  --bloomwise-success: #16a34a; /* Growth Green */
+  --bloomwise-warning: #f59e0b; /* Energy Amber */
+  --bloomwise-cream: #f8fafc; /* Cream White */
+  --bloomwise-dark: #1e293b; /* Slate/Dark */
+  --footer-text: #9a9da0;
+
+  /* 🎯 Map brand to Tailwind tokens */
+  --color-background: var(--bloomwise-cream);
+  --color-foreground: var(--bloomwise-dark);
+
+  --color-card: var(--bloomwise-cream);
+  --color-card-foreground: var(--bloomwise-dark);
+
+  --color-popover: var(--bloomwise-cream);
+  --color-popover-foreground: var(--bloomwise-dark);
+
+  --color-primary: var(--bloomwise-primary);
+  --color-primary-foreground: var(--bloomwise-cream);
+
+  --color-secondary: var(--bloomwise-success);
+  --color-secondary-foreground: var(--bloomwise-cream);
+
+  --color-accent: var(--bloomwise-warning);
+  --color-accent-foreground: var(--bloomwise-dark);
+
+  --color-muted: #e2e8f0;
+  --color-muted-foreground: #475569;
+
+  --color-destructive: #dc2626;
+  --color-border: #cbd5e1;
+  --color-input: #e2e8f0;
+  --color-ring: var(--bloomwise-primary);
+
+  /* Fonts */
+  --font-figtree: "Figtree", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-space-grotesk: "Space Grotesk", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@variant dark (&:is(.dark *));
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Explicitly define the footer text color */
+  .text-footer-text {
+    color: var(--footer-text);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom Typography Utilities */
+@utility heading-hero {
+  font-family: var(--font-figtree);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+
+  @media (min-width: 768px) {
+    font-size: 3.5rem;
+  }
+}
+
+@utility heading-section {
+  font-family: var(--font-figtree);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+
+  @media (min-width: 768px) {
+    font-size: 2.5rem;
+  }
+}
+
+@utility heading-card {
+  font-family: var(--font-figtree);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+@utility body-large {
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+
+  @media (min-width: 768px) {
+    font-size: 1.125rem;
+  }
+}
+
+@utility body-regular {
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+@utility accent-text {
+  font-family: var(--font-space-grotesk);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Glassmorphism Effect */
+@utility glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* Modern Gradient Backgrounds */
+@utility gradient-hero {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+}
+
+@utility gradient-primary {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+@utility gradient-success {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+}
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  margin: auto;
 }
