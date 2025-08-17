@@ -34,17 +34,17 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-bloomwise-dark text-bloomwise-cream">
+    <footer className="header-footer-theme">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-2 space-y-6">
             <div>
               <h3
-                className="text-2xl font-bold text-[#f59e0b] mb-4"
+                className="text-2xl font-bold text-accent mb-4 hover:text-accent/80 transition-colors duration-300"
                 style={{ fontFamily: "var(--font-figtree)" }}
               >
-                Bloomwise Tutoring
+                RichBlend Consult
               </h3>
               <p className="body-regular text-footer-text leading-relaxed max-w-md">
                 Expert 11+ and SEN tutoring by Temitope Adeniyi. Personalized
@@ -60,7 +60,7 @@ const Footer = () => {
                   <a
                     key={index}
                     href={contact.href}
-                    className="flex items-center space-x-3 text-footer-text hover:text-bloomwise-cream transition-colors duration-200 group"
+                    className="flex items-center space-x-3 text-footer-text hover:text-header-footer-text transition-all duration-300 group hover-lift"
                   >
                     <IconComponent className="w-4 h-4 text-bloomwise-primary group-hover:text-bloomwise-success transition-colors duration-200" />
                     <span className="body-regular text-footer-text">
@@ -75,7 +75,7 @@ const Footer = () => {
           {/* Quick Links */}
           <div className="space-y-6">
             <h4
-              className="text-lg font-semibold text-bloomwise-cream"
+              className="text-lg font-semibold text-header-footer-text"
               style={{ fontFamily: "var(--font-figtree)" }}
             >
               Quick Links
@@ -83,31 +83,31 @@ const Footer = () => {
             <nav className="space-y-3">
               <a
                 href="/services"
-                className="block text-footer-text hover:text-bloomwise-cream transition-colors duration-200 body-regular"
+                className="block text-footer-text hover:text-header-footer-text transition-all duration-300 body-regular hover-lift"
               >
                 Our Services
               </a>
               <a
                 href="/about"
-                className="block text-footer-text  hover:text-bloomwise-cream  transition-colors duration-200 body-regular"
+                className="block text-footer-text hover:text-header-footer-text transition-all duration-300 body-regular hover-lift"
               >
                 About Temitope
               </a>
               <a
                 href="/book-consultation"
-                className="block text-footer-text  hover:text-bloomwise-cream transition-colors duration-200 body-regular"
+                className="block text-footer-text hover:text-header-footer-text transition-all duration-300 body-regular hover-lift"
               >
                 Book Consultation
               </a>
               <a
                 href="/testimonials"
-                className="block text-footer-text hover:text-bloomwise-cream transition-colors duration-200 body-regular"
+                className="block text-footer-text hover:text-header-footer-text transition-all duration-300 body-regular hover-lift"
               >
                 Testimonials
               </a>
               <a
                 href="/contact"
-                className="block text-footer-text hover:text-bloomwise-cream transition-colors duration-200 body-regular"
+                className="block text-footer-text hover:text-header-footer-text transition-all duration-300 body-regular hover-lift"
               >
                 Contact Us
               </a>
@@ -117,7 +117,7 @@ const Footer = () => {
           {/* Social & Legal */}
           <div className="space-y-6">
             <h4
-              className="text-lg font-semibold text-bloomwise-cream"
+              className="text-lg font-semibold text-header-footer-text"
               style={{ fontFamily: "var(--font-figtree)" }}
             >
               Connect With Us
@@ -133,10 +133,10 @@ const Footer = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 bg-bloomwise-cream/10 hover:bg-bloomwise-primary rounded-full flex items-center justify-center transition-colors duration-200 group"
+                    className="w-10 h-10 bg-header-footer-text/10 hover:bg-accent rounded-full flex items-center justify-center transition-all duration-300 group hover-scale"
                     aria-label={social.label}
                   >
-                    <IconComponent className="w-4 h-4 text-bloomwise-cream group-hover:text-bloomwise-cream" />
+                    <IconComponent className="w-4 h-4 text-header-footer-text group-hover:text-header-footer-text transition-colors duration-300" />
                   </a>
                 );
               })}
@@ -148,7 +148,7 @@ const Footer = () => {
                 <a
                   key={index}
                   href={link.href}
-                  className="block text-footer-text hover:text-bloomwise-cream transition-colors duration-200 body-regular"
+                  className="block text-footer-text hover:text-header-footer-text transition-all duration-300 body-regular hover-lift"
                 >
                   {link.text}
                 </a>

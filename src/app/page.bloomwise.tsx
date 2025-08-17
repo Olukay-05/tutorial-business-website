@@ -10,9 +10,9 @@ import Testimonials from '@/components/homepage/Testimonials';
 
 export default function BloomwiseHomepage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background transition-colors duration-300">
       <Header />
-      <main>
+      <main className="relative">
         <Hero />
         <ServicesOverview />
         <TutorProfile />

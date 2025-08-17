@@ -1,24 +1,26 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Quote, Star } from 'lucide-react';
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Quote, Star } from "lucide-react";
 
 const Testimonials = () => {
   const testimonials = [
     {
-      quote: "Sister Tope's tutoring gave my child the confidence boost they needed for their 11+ exams. We saw a remarkable improvement in both their academic performance and self-belief!",
-      parent: "Sarah M.",
-      location: "London",
+      quote:
+        "Mrs. Adeniyi has taught all three of my children, and each one has thrived under her care. Her dedication, kindness, and teaching skills bring out the best in every child. More than a teacher, she’s truly a blessing to our family!",
+      parent: "Josephine U.",
+      location: "Lagos",
       rating: 5,
-      highlight: "11+ Success Story"
+      highlight: "11+ Success Story",
     },
     {
-      quote: "The personalized support for my child with dyslexia has been life-changing. Her understanding and patience are second to none. My daughter now loves learning!",
+      quote:
+        "The personalized support for my child with dyslexia has been life-changing. Her understanding and patience are second to none. My daughter now loves learning!",
       parent: "Michael R.",
       location: "Birmingham",
       rating: 5,
-      highlight: "SEN Support"
+      highlight: "SEN Support",
     },
   ];
 
@@ -31,14 +33,15 @@ const Testimonials = () => {
             What Parents Say
           </h2>
           <p className="body-large text-muted-foreground max-w-2xl mx-auto">
-            Real stories from families who've experienced the Bloomwise difference
+            Real stories from families who&apos;ve experienced the Bloomwise
+            difference
           </p>
         </div>
 
         {/* Testimonials Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {testimonials.map((testimonial, index) => (
-            <Card 
+            <Card
               key={index}
               className="relative bg-card backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 animate-fade-in-up"
               style={{ animationDelay: `${index * 150}ms` }}
@@ -54,7 +57,10 @@ const Testimonials = () => {
                 {/* Rating */}
                 <div className="flex items-center space-x-1 mb-4 pt-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-accent text-accent transition-colors duration-300 hover:fill-accent/80" />
+                    <Star
+                      key={i}
+                      className="w-4 h-4 fill-accent text-accent transition-colors duration-300 hover:fill-accent/80"
+                    />
                   ))}
                 </div>
 
@@ -67,7 +73,7 @@ const Testimonials = () => {
 
                 {/* Quote */}
                 <blockquote className="body-regular text-card-foreground leading-relaxed mb-6 accent-text">
-                  "{testimonial.quote}"
+                  &quot;{testimonial.quote}&quot;
                 </blockquote>
 
                 {/* Attribution */}
@@ -97,8 +103,8 @@ const Testimonials = () => {
             <p className="body-large text-card-foreground font-medium">
               Join our community of successful families
             </p>
-            <a 
-              href="/testimonials" 
+            <a
+              href="/testimonials"
               className="text-primary hover:text-primary/80 font-semibold underline underline-offset-4 hover:underline-offset-8 transition-all duration-200 accent-text"
             >
               Read more success stories →

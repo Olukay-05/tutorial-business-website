@@ -37,6 +37,9 @@ const config: Config = {
         "bloomwise-cream": "var(--bloomwise-cream)",
         "bloomwise-dark": "var(--bloomwise-dark)",
         "footer-text": "var(--footer-text)",
+        // Header/Footer theme-aware colors
+        "header-footer-bg": "var(--header-footer-bg)",
+        "header-footer-text": "var(--header-footer-text)",
       },
     },
   },

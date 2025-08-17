@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,6 +9,17 @@ import { ThemeToggle } from "@/components/theme-toggle";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navigationLinks = [
     { href: "/services", label: "Services" },
@@ -18,16 +29,26 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        isScrolled
+          ? "glassmorphic-header border-b border-white/10"
+          : "border-b header-footer-theme"
+      }`}
+    >
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <div className="flex items-center">
           <Link
             href="/"
-            className="text-2xl font-bold text-primary hover:opacity-80 transition-opacity"
+            className={`text-2xl font-bold transition-all duration-300 hover:scale-105 ${
+              isScrolled
+                ? "text-primary hover:text-accent dark:text-header-footer-text dark:hover:text-accent"
+                : "text-primary hover:text-accent"
+            }`}
             style={{ fontFamily: "var(--font-figtree)" }}
           >
-            Bloomwise Tutoring
+            RichBlend Consult
           </Link>
         </div>
 
@@ -37,7 +58,11 @@ const Header = () => {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm px-2 py-1"
+              className={`text-sm font-medium transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1 ${
+                isScrolled
+                  ? "text-bloomwise-dark hover:text-accent dark:text-header-footer-text dark:hover:text-accent"
+                  : "text-header-footer-text hover:text-accent"
+              }`}
               style={{ fontFamily: "var(--font-inter)" }}
             >
               {link.label}
@@ -53,7 +78,11 @@ const Header = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="h-10 w-10 focus:ring-2 focus:ring-primary"
+              className={`h-10 w-10 focus:ring-2 focus:ring-primary ${
+                isScrolled
+                  ? "text-bloomwise-dark hover:text-accent dark:text-header-footer-text dark:hover:text-accent"
+                  : "text-header-footer-text hover:text-accent"
+              }`}
               aria-label="Open navigation menu"
             >
               <Menu className="h-5 w-5" />
