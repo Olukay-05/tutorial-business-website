@@ -94,7 +94,7 @@ const Footer = () => {
                 About Temitope
               </a>
               <a
-                href="/book-consultation"
+                href="/consultation"
                 className="block text-footer-text hover:text-header-footer-text transition-all duration-300 body-regular hover-lift"
               >
                 Book Consultation

@@ -21,11 +21,16 @@ export const contactSchema = z.object({
     .min(1, "Please select at least one subject"),
   message: z
     .string()
-    .min(10, "Message must be at least 10 characters")
+    .min(1, "Message is required")
     .max(1000, "Message must be less than 1000 characters"),
 });
 
 export type ContactFormValues = z.infer<typeof contactSchema>;
+
+// Make child_age optional in the type to match form default values
+export type ContactFormValuesWithOptionalAge = Omit<ContactFormValues, 'child_age'> & {
+  child_age?: number;
+};
 
 export const SUBJECTS = [
   "11+ Maths",

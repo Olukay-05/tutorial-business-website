@@ -23,7 +23,8 @@ const Header = () => {
 
   const navigationLinks = [
     { href: "/services", label: "Services" },
-    { href: "/book-consultation", label: "Book a Consultation" },
+    { href: "/curriculum", label: "Curriculum" },
+    { href: "/consultation", label: "Consultation" },
     { href: "/contact", label: "Contact" },
     { href: "/login", label: "Login" },
   ];
