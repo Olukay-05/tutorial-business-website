@@ -108,10 +108,7 @@ const TutorProfile = () => {
             style={{ animationDelay: "200ms" }}
           >
             <div className="space-y-2 group">
-              <div
-                className="text-3xl font-bold text-bloomwise-primary transition-colors duration-300 group-hover:text-bloomwise-primary/80"
-                style={{ fontFamily: "var(--font-figtree)" }}
-              >
+              <div className="text-3xl font-bold text-bloomwise-primary transition-colors duration-300 group-hover:text-bloomwise-primary/80 font-figtree">
                 200+
               </div>
               <p className="text-muted-foreground body-regular transition-colors duration-300 group-hover:text-foreground">
@@ -119,10 +116,7 @@ const TutorProfile = () => {
               </p>
             </div>
             <div className="space-y-2 group">
-              <div
-                className="text-3xl font-bold text-bloomwise-success transition-colors duration-300 group-hover:text-bloomwise-success/80"
-                style={{ fontFamily: "var(--font-figtree)" }}
-              >
+              <div className="text-3xl font-bold text-bloomwise-success transition-colors duration-300 group-hover:text-bloomwise-success/80 font-figtree">
                 98%
               </div>
               <p className="text-muted-foreground body-regular transition-colors duration-300 group-hover:text-foreground">
@@ -130,10 +124,7 @@ const TutorProfile = () => {
               </p>
             </div>
             <div className="space-y-2 group">
-              <div
-                className="text-3xl font-bold text-bloomwise-warning transition-colors duration-300 group-hover:text-bloomwise-warning/80"
-                style={{ fontFamily: "var(--font-figtree)" }}
-              >
+              <div className="text-3xl font-bold text-bloomwise-warning transition-colors duration-300 group-hover:text-bloomwise-warning/80 font-figtree">
                 20+
               </div>
               <p className="text-muted-foreground body-regular transition-colors duration-300 group-hover:text-foreground">

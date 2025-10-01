@@ -9,7 +9,9 @@ interface ConsultationHeroProps {
   onBookNowClick: () => void;
 }
 
-const ConsultationHero: React.FC<ConsultationHeroProps> = ({ onBookNowClick }) => {
+const ConsultationHero: React.FC<ConsultationHeroProps> = ({
+  onBookNowClick,
+}) => {
   const heroRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subheadlineRef = useRef<HTMLParagraphElement>(null);
@@ -124,9 +126,12 @@ const ConsultationHero: React.FC<ConsultationHeroProps> = ({ onBookNowClick }) =
             ref={subheadlineRef}
             className="body-large text-foreground/80 mb-8 max-w-2xl mx-auto transition-colors duration-300 hover:text-foreground"
           >
-            Let&apos;s discuss your child&apos;s learning needs and create a personalized plan to help them succeed.
+            Let&apos;s discuss your child&apos;s learning needs and create a
+            personalized plan to help them succeed.
             <br />
-            <span className="text-primary font-medium">Simple, obligation-free, and tailored to your child.</span>
+            <span className="text-primary font-medium">
+              Simple, obligation-free, and tailored to your child.
+            </span>
           </p>
 
           {/* CTA Buttons */}
@@ -137,8 +142,7 @@ const ConsultationHero: React.FC<ConsultationHeroProps> = ({ onBookNowClick }) =
             <Button
               size="lg"
               onClick={onBookNowClick}
-              className="gradient-success text-white hover:shadow-lg transform hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold"
-              style={{ fontFamily: "var(--font-inter)" }}
+              className="gradient-success text-white hover:shadow-lg transform hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold font-inter"
             >
               <Calendar className="mr-2 h-5 w-5" />
               Book Now - It&apos;s Free
@@ -154,9 +158,7 @@ const ConsultationHero: React.FC<ConsultationHeroProps> = ({ onBookNowClick }) =
                   />
                 ))}
               </div>
-              <span className="accent-text">
-                Trusted by 200+ families
-              </span>
+              <span className="accent-text">Trusted by 200+ families</span>
             </div>
           </div>
 

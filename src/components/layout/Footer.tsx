@@ -40,10 +40,7 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="lg:col-span-2 space-y-6">
             <div>
-              <h3
-                className="text-2xl font-bold text-accent mb-4 hover:text-accent/80 transition-colors duration-300"
-                style={{ fontFamily: "var(--font-figtree)" }}
-              >
+              <h3 className="text-2xl font-bold text-accent mb-4 hover:text-accent/80 transition-colors duration-300 font-figtree">
                 RichBlend Consult
               </h3>
               <p className="body-regular text-footer-text leading-relaxed max-w-md">
@@ -75,8 +72,7 @@ const Footer = () => {
           {/* Quick Links */}
           <div className="space-y-6">
             <h4
-              className="text-lg font-semibold text-header-footer-text"
-              style={{ fontFamily: "var(--font-figtree)" }}
+              className="text-lg font-semibold text-header-footer-text font-figtree"
             >
               Quick Links
             </h4>
@@ -117,8 +113,7 @@ const Footer = () => {
           {/* Social & Legal */}
           <div className="space-y-6">
             <h4
-              className="text-lg font-semibold text-header-footer-text"
-              style={{ fontFamily: "var(--font-figtree)" }}
+              className="text-lg font-semibold text-header-footer-text font-figtree"
             >
               Connect With Us
             </h4>

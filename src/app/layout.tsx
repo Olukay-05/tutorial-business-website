@@ -38,8 +38,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}
-        style={{ fontFamily: "var(--font-inter)" }}
+        className={`${inter.variable} ${spaceGrotesk.variable} antialiased font-sans`}
       >
         {children}
       </body>

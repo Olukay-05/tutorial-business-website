@@ -97,6 +97,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-inter);
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
@@ -319,7 +320,7 @@
       transform: translateY(-5px) rotate(-1deg);
     }
   }
-  
+
   /* 📝 Form-specific animations */
   @keyframes form-field-focus {
     0% {
@@ -332,7 +333,7 @@
       transform: scale(1.01);
     }
   }
-  
+
   /* 🎯 Enhanced form field styling */
   .form-field-enhanced:focus-within {
     animation: form-field-focus 0.3s ease-out;
@@ -393,6 +394,18 @@
   font-family: var(--font-space-grotesk);
   font-weight: 500;
   letter-spacing: 0.01em;
+}
+
+@utility font-inter {
+  font-family: var(--font-inter);
+}
+
+@utility font-figtree {
+  font-family: var(--font-figtree);
+}
+
+@utility font-space-grotesk {
+  font-family: var(--font-space-grotesk);
 }
 
 /* Glassmorphism Effect */

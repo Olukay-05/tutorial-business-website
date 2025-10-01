@@ -6,7 +6,7 @@ import { Quote } from "lucide-react";
 const CalloutQuote: React.FC = () => {
   const quoteRef = useRef<HTMLDivElement>(null);
   const iconRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLElement>(null);
+  const textRef = useRef<HTMLQuoteElement>(null);
   const authorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -62,8 +62,7 @@ const CalloutQuote: React.FC = () => {
         {/* Quote text */}
         <blockquote
           ref={textRef}
-          className="text-xl md:text-2xl font-semibold text-white leading-relaxed opacity-0"
-          style={{ fontFamily: "var(--font-figtree)" }}
+          className="text-xl md:text-2xl font-semibold text-white leading-relaxed opacity-0 font-figtree"
         >
           &quot;Give me a chance with your child, you&apos;ll be glad you
           did.&quot;
