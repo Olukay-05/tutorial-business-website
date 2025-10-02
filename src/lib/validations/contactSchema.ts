@@ -8,6 +8,10 @@ export const contactSchema = z.object({
   email: z
     .string()
     .email("Please enter a valid email address"),
+  phone: z
+    .string()
+    .min(7, "Phone number must be at least 7 digits")
+    .max(15, "Phone number must be less than 15 digits"),
   child_age: z
     .number()
     .int("Age must be a whole number")
@@ -34,6 +38,10 @@ export const contactFormSchema = z.object({
   email: z
     .string()
     .email("Please enter a valid email address"),
+  phone: z
+    .string()
+    .min(7, "Phone number must be at least 7 digits")
+    .max(15, "Phone number must be less than 15 digits"),
   child_age: z
     .number()
     .int("Age must be a whole number")

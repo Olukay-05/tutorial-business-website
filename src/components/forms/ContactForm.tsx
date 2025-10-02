@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 import {
   Mail,
   User,
@@ -11,6 +13,7 @@ import {
   Send,
   CheckCircle,
   AlertCircle,
+  Phone,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -37,6 +40,69 @@ import {
   SUBJECTS,
 } from "@/lib/validations/contactSchema";
 
+// Add custom CSS for phone input styling
+const phoneInputStyles = `
+  .phone-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 2.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    border: 1px solid hsl(var(--input));
+    background-color: transparent;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    transition: all 0.3s ease;
+  }
+
+  .phone-input:focus-within {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    box-shadow: 0 0 0 1px hsl(var(--ring));
+    transform: scale(1.02);
+  }
+
+  .phone-input:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .phone-input .react-phone-number-input__icon {
+    margin-right: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .phone-input .react-phone-number-input__country {
+    margin-right: 0.5rem;
+  }
+
+  .phone-input .react-phone-number-input__input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    outline: none;
+  }
+
+  .phone-input .react-phone-number-input__input:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .phone-input,
+    .phone-input:hover,
+    .phone-input:focus-within {
+      transition: none;
+      transform: none;
+    }
+  }
+`;
+
 interface ContactFormProps {
   className?: string;
 }
@@ -52,6 +118,7 @@ export function ContactForm({ className }: ContactFormProps) {
     defaultValues: {
       name: "",
       email: "",
+      phone: "",
       child_age: undefined,
       subjects: [],
       message: "",
@@ -109,7 +176,9 @@ export function ContactForm({ className }: ContactFormProps) {
   };
 
   return (
-    <Card className={`glass-card border-0 shadow-2xl hover-lift ${className}`}>
+    <>
+      <style>{phoneInputStyles}</style>
+      <Card className={`glass-card border-0 shadow-2xl hover-lift ${className}`}>
       <CardHeader className="text-center pb-6">
         <CardTitle className="heading-card text-primary mb-2">
           Get in Touch
@@ -185,6 +254,40 @@ export function ContactForm({ className }: ContactFormProps) {
               )}
             />
 
+            {/* Phone Number Field */}
+            <FormField
+              control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem
+                  className="animate-fade-in-up"
+                  style={{ animationDelay: "0.15s" }}
+                >
+                  <FormLabel className="flex items-center gap-2 accent-text">
+                    <Phone className="w-4 h-4 text-primary" />
+                    Phone Number
+                  </FormLabel>
+                  <FormControl>
+                    <PhoneInput
+                      {...field}
+                      international
+                      countryCallingCodeEditable={false}
+                      defaultCountry="NG"
+                      className="w-full phone-input"
+                      aria-describedby="phone-description"
+                    />
+                  </FormControl>
+                  <FormDescription
+                    id="phone-description"
+                    className="text-xs text-muted-foreground"
+                  >
+                    Please enter your phone number with country code
+                  </FormDescription>
+                  <FormMessage className="animate-slide-in-left" />
+                </FormItem>
+              )}
+            />
+
             {/* Child Age Field */}
             <FormField
               control={form.control}
@@ -192,7 +295,7 @@ export function ContactForm({ className }: ContactFormProps) {
               render={({ field }) => (
                 <FormItem
                   className="animate-fade-in-up"
-                  style={{ animationDelay: "0.2s" }}
+                  style={{ animationDelay: "0.25s" }}
                 >
                   <FormLabel className="flex items-center gap-2 accent-text">
                     <Calendar className="w-4 h-4 text-primary" />
@@ -233,7 +336,7 @@ export function ContactForm({ className }: ContactFormProps) {
               render={() => (
                 <FormItem
                   className="animate-fade-in-up"
-                  style={{ animationDelay: "0.3s" }}
+                  style={{ animationDelay: "0.35s" }}
                 >
                   <FormLabel className="accent-text">
                     Subjects of Interest
@@ -286,7 +389,7 @@ export function ContactForm({ className }: ContactFormProps) {
               render={({ field }) => (
                 <FormItem
                   className="animate-fade-in-up"
-                  style={{ animationDelay: "0.4s" }}
+                  style={{ animationDelay: "0.45s" }}
                 >
                   <FormLabel className="flex items-center gap-2 accent-text">
                     <MessageSquare className="w-4 h-4 text-primary" />
@@ -328,7 +431,7 @@ export function ContactForm({ className }: ContactFormProps) {
             {/* Submit Button */}
             <div
               className="pt-4 animate-fade-in-up"
-              style={{ animationDelay: "0.5s" }}
+              style={{ animationDelay: "0.55s" }}
             >
               <Button
                 type="submit"
@@ -389,5 +492,6 @@ export function ContactForm({ className }: ContactFormProps) {
         </Form>
       </CardContent>
     </Card>
-  );
+  </>
+);
 }
