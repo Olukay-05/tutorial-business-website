@@ -26,7 +26,9 @@ const SubjectCard: React.FC<SubjectCardProps> = ({
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("animate-fade-in-up");
-            entry.target.style.animationDelay = `${index * 0.1}s`;
+            if (entry.target instanceof HTMLElement) {
+              entry.target.style.animationDelay = `${index * 0.1}s`;
+            }
           }
         });
       },

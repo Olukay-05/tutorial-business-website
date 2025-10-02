@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { 
-  Calculator, 
-  BookOpen, 
-  Microscope, 
-  PenTool, 
+import {
+  Calculator,
+  BookOpen,
+  Microscope,
+  PenTool,
   Heart,
   Target,
   Award,
-  Users
+  Users,
 } from "lucide-react";
 
 import Header from "@/components/layout/Header";
@@ -38,8 +38,14 @@ const CurriculumPage: React.FC = () => {
       { threshold: 0.1, rootMargin: "-50px" }
     );
 
-    const refs = [introRef, coreSubjectsRef, senSupportRef, philosophyRef, whyChooseRef];
-    refs.forEach(ref => {
+    const refs = [
+      introRef,
+      coreSubjectsRef,
+      senSupportRef,
+      philosophyRef,
+      whyChooseRef,
+    ];
+    refs.forEach((ref) => {
       if (ref.current) observer.observe(ref.current);
     });
 
@@ -54,8 +60,8 @@ const CurriculumPage: React.FC = () => {
         "Build strong foundations in numeracy and problem solving",
         "Simplify complex concepts into clear, practical steps",
         "Boost confidence in mathematical thinking",
-        "Tailored support for learners at all levels"
-      ]
+        "Tailored support for learners at all levels",
+      ],
     },
     {
       title: "Literacy & English",
@@ -66,8 +72,8 @@ const CurriculumPage: React.FC = () => {
         "Teach pupils to speak and write correctly using proper tenses",
         "Build word, sentence, and text-level understanding",
         "Address confusing words and improve comprehension skills",
-        "Use worksheets and varied texts to boost creativity and lasting results"
-      ]
+        "Use worksheets and varied texts to boost creativity and lasting results",
+      ],
     },
     {
       title: "Science",
@@ -76,8 +82,8 @@ const CurriculumPage: React.FC = () => {
       points: [
         "Engaging, age-appropriate lessons that nurture curiosity",
         "Hands-on activities and explanations for elementary and middle school learners",
-        "Focus on building a deep understanding of core concepts"
-      ]
+        "Focus on building a deep understanding of core concepts",
+      ],
     },
     {
       title: "Handwriting",
@@ -86,9 +92,9 @@ const CurriculumPage: React.FC = () => {
       points: [
         "Patient guidance to improve penmanship and writing confidence",
         "Strategies for early writers and pupils needing extra support",
-        "Build fluency for effective written communication"
-      ]
-    }
+        "Build fluency for effective written communication",
+      ],
+    },
   ];
 
   const specialSupport = {
@@ -99,37 +105,39 @@ const CurriculumPage: React.FC = () => {
       "Personalized teaching strategies for learners with dyslexia, autism, or other SEN needs",
       "Reading intervention support for early readers and struggling pupils",
       "Focus on confidence, curiosity, and individual strengths",
-      "Proven methods to help learners read fluently, spell confidently, and excel in comprehension"
-    ]
+      "Proven methods to help learners read fluently, spell confidently, and excel in comprehension",
+    ],
   };
 
   const teachingPhilosophy = [
     {
       title: "Tailored Approach",
-      description: "Lessons are tailored, interactive, and focused on long-term academic growth",
-      icon: <Target className="w-6 h-6" />
+      description:
+        "Lessons are tailored, interactive, and focused on long-term academic growth",
+      icon: <Target className="w-6 h-6" />,
     },
     {
       title: "Patient Support",
       description: "Patient, personalized support for every child",
-      icon: <Heart className="w-6 h-6" />
+      icon: <Heart className="w-6 h-6" />,
     },
     {
       title: "Confidence Building",
-      description: "Build confidence, curiosity, and essential skills for academic success",
-      icon: <Award className="w-6 h-6" />
+      description:
+        "Build confidence, curiosity, and essential skills for academic success",
+      icon: <Award className="w-6 h-6" />,
     },
     {
       title: "Experience",
       description: "Experienced in leading and teaching early years education",
-      icon: <Users className="w-6 h-6" />
-    }
+      icon: <Users className="w-6 h-6" />,
+    },
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       <main>
         {/* Hero Section */}
         <CurriculumHero />
@@ -142,9 +150,13 @@ const CurriculumPage: React.FC = () => {
               className="max-w-3xl mx-auto text-center mb-16 opacity-0"
             >
               <p className="body-large text-foreground/80 leading-relaxed">
-                I'm an experienced online tutor passionate about helping children succeed and build confidence in their learning. 
-                I work with <strong className="text-primary">early years, elementary, and middle school students</strong>, 
-                offering tailored lessons in a variety of subjects.
+                I&apos;m an experienced online tutor passionate about helping
+                children succeed and build confidence in their learning. I work
+                with{" "}
+                <strong className="text-primary">
+                  early years, elementary, and middle school students
+                </strong>
+                , offering tailored lessons in a variety of subjects.
               </p>
             </div>
 
@@ -154,7 +166,9 @@ const CurriculumPage: React.FC = () => {
                 ref={coreSubjectsRef}
                 className="text-center mb-12 opacity-0"
               >
-                <h2 className="heading-section text-primary mb-4">Core Subjects</h2>
+                <h2 className="heading-section text-primary mb-4">
+                  Core Subjects
+                </h2>
                 <p className="body-regular text-muted-foreground max-w-2xl mx-auto">
                   Comprehensive learning across essential academic areas
                 </p>
@@ -178,11 +192,10 @@ const CurriculumPage: React.FC = () => {
 
             {/* SEN Support Section */}
             <div className="mb-20">
-              <div
-                ref={senSupportRef}
-                className="text-center mb-12 opacity-0"
-              >
-                <h2 className="heading-section text-primary mb-4">Specialized Support</h2>
+              <div ref={senSupportRef} className="text-center mb-12 opacity-0">
+                <h2 className="heading-section text-primary mb-4">
+                  Specialized Support
+                </h2>
                 <p className="body-regular text-muted-foreground max-w-2xl mx-auto">
                   Dedicated support for children with special educational needs
                 </p>
@@ -203,13 +216,13 @@ const CurriculumPage: React.FC = () => {
 
             {/* Teaching Philosophy */}
             <div className="mb-20">
-              <div
-                ref={philosophyRef}
-                className="text-center mb-12 opacity-0"
-              >
-                <h2 className="heading-section text-primary mb-4">Teaching Philosophy</h2>
+              <div ref={philosophyRef} className="text-center mb-12 opacity-0">
+                <h2 className="heading-section text-primary mb-4">
+                  Teaching Philosophy
+                </h2>
                 <p className="body-regular text-muted-foreground max-w-2xl mx-auto">
-                  My approach to nurturing young minds and fostering academic success
+                  My approach to nurturing young minds and fostering academic
+                  success
                 </p>
               </div>
 
@@ -224,8 +237,12 @@ const CurriculumPage: React.FC = () => {
                       {item.icon}
                     </div>
                     <div>
-                      <h3 className="heading-card text-primary mb-2">{item.title}</h3>
-                      <p className="body-regular text-foreground/80">{item.description}</p>
+                      <h3 className="heading-card text-primary mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="body-regular text-foreground/80">
+                        {item.description}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -234,11 +251,10 @@ const CurriculumPage: React.FC = () => {
 
             {/* Why Choose Me Section */}
             <div className="mb-20">
-              <div
-                ref={whyChooseRef}
-                className="text-center mb-12 opacity-0"
-              >
-                <h2 className="heading-section text-primary mb-4">Why Choose Me?</h2>
+              <div ref={whyChooseRef} className="text-center mb-12 opacity-0">
+                <h2 className="heading-section text-primary mb-4">
+                  Why Choose Me?
+                </h2>
               </div>
 
               <div className="max-w-3xl mx-auto bg-card/30 rounded-2xl p-8 border border-border/50 animate-bounce-in">
@@ -247,7 +263,7 @@ const CurriculumPage: React.FC = () => {
                     "Years of hands-on experience in both online tutoring and preschool leadership",
                     "Strong record of helping children make measurable progress",
                     "Support for early years through middle school learners",
-                    "Individualized approach that meets diverse learning needs"
+                    "Individualized approach that meets diverse learning needs",
                   ].map((point, index) => (
                     <li
                       key={index}
