@@ -33,7 +33,6 @@ import {
 } from "@/components/ui/form";
 import {
   contactFormSchema,
-  contactSchema,
   type ContactFormValuesWithOptionalAge,
   SUBJECTS,
 } from "@/lib/validations/contactSchema";
@@ -63,28 +62,13 @@ export function ContactForm({ className }: ContactFormProps) {
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
-    // Validate that child_age has a value before submission if it's required by business logic
-    // Here we validate that child_age is provided - it's part of the UI validation
-    // but if for some reason the form validation didn't catch it, we can check here
-    if (values.child_age === undefined || values.child_age === null) {
-      // This shouldn't happen if the form validation is working properly
-      // but adding as extra check
-      form.setError("child_age", { message: "Child&apos;s age is required" });
-      setSubmitStatus("error");
-      setIsSubmitting(false);
-      return;
-    }
-
     try {
-      // Validate with the strict schema before sending to API
-      const validatedValues = contactSchema.parse(values);
-
-      const response = await fetch("/api/contacts", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(validatedValues),
+        body: JSON.stringify(values),
       });
 
       if (response.ok) {
