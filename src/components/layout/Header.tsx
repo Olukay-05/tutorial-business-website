@@ -42,12 +42,11 @@ const Header = () => {
         <div className="flex items-center">
           <Link
             href="/"
-            className={`text-2xl font-bold transition-all duration-300 hover:scale-105 ${
+            className={`text-2xl font-bold transition-all duration-300 hover:scale-105 font-figtree ${
               isScrolled
                 ? "text-primary hover:text-accent dark:text-header-footer-text dark:hover:text-accent"
                 : "text-primary hover:text-accent"
             }`}
-            style={{ fontFamily: "var(--font-figtree)" }}
           >
             RichBlend Consult
           </Link>
@@ -59,12 +58,11 @@ const Header = () => {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1 ${
+              className={`text-sm font-medium transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1 font-inter ${
                 isScrolled
                   ? "text-bloomwise-dark hover:text-accent dark:text-header-footer-text dark:hover:text-accent"
                   : "text-header-footer-text hover:text-accent"
               }`}
-              style={{ fontFamily: "var(--font-inter)" }}
             >
               {link.label}
             </Link>
@@ -91,18 +89,14 @@ const Header = () => {
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] sm:w-[400px]">
             <div className="flex flex-col space-y-4 mt-8">
-              <div
-                className="text-lg font-semibold text-primary mb-4"
-                style={{ fontFamily: "var(--font-figtree)" }}
-              >
+              <div className="text-lg font-semibold text-primary mb-4 font-figtree">
                 Navigation
               </div>
               {navigationLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-base font-medium text-foreground hover:text-primary transition-colors duration-200 py-3 px-4 rounded-lg hover:bg-card focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                  style={{ fontFamily: "var(--font-inter)" }}
+                  className="text-base font-medium text-foreground hover:text-primary transition-colors duration-200 py-3 px-4 rounded-lg font-inter"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}

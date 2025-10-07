@@ -1,64 +1,46 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import { InlineWidget } from "react-calendly";
+import { useEffect, useState } from "react";
 
 interface CalendlyEmbedProps {
-  url?: string;
+  url: string;
   className?: string;
 }
 
-const CalendlyEmbed: React.FC<CalendlyEmbedProps> = ({
-  url = "https://calendly.com/richblendconsult",
-  className = "",
-}) => {
-  // const calendlyRef = useRef<HTMLDivElement>(null);
+// Create a loading component to match the expected LoadingSpinner type
+const LoadingComponent = () => (
+  <div className="flex items-center justify-center h-full">Loading...</div>
+);
 
-  // <!-- Calendly inline widget begin -->
-  // <div class="calendly-inline-widget" data-url="https://calendly.com/richblendconsult" style="min-width:320px;height:700px;"></div>
-  // <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-  // <!-- Calendly inline widget end -->
+const CalendlyEmbed = ({ url, className = "" }: CalendlyEmbedProps) => {
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // Dynamically load Calendly script for performance
-    const script = document.createElement("script");
-    script.src = "https://assets.calendly.com/assets/external/widget.js";
-    script.async = true;
-
-    // The script will automatically initialize widgets with data-url attributes
-    document.head.appendChild(script);
-
-    return () => {
-      // Cleanup script on unmount
-      const existingScript = document.querySelector(
-        'script[src="https://assets.calendly.com/assets/external/widget.js"]'
-      );
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
+    setIsClient(true);
   }, []);
 
+  if (!isClient) {
+    return (
+      <div
+        className={`w-full h-[700px] rounded-lg overflow-hidden ${className}`}
+      >
+        <div className="flex items-center justify-center h-full bg-gray-50 dark:bg-gray-900">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div
-      className={`calendly-inline-widget ${className}`}
-      data-url={url}
-      style={{ minWidth: "320px", height: "700px" }}
-    />
+    <div className={`w-full h-[900px] rounded-lg overflow-hidden ${className}`}>
+      <InlineWidget
+        url={url}
+        styles={{ height: "100%", width: "100%" }}
+        LoadingSpinner={LoadingComponent}
+      />
+    </div>
   );
 };
-
-// Extend Window interface for TypeScript
-declare global {
-  interface Window {
-    Calendly: {
-      initInlineWidget: (options: {
-        url: string;
-        parentElement: HTMLElement;
-        prefill: Record<string, any>;
-        utm: Record<string, any>;
-      }) => void;
-    };
-  }
-}
 
 export default CalendlyEmbed;

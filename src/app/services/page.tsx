@@ -37,10 +37,19 @@ const ServicesPage = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       // Set initial states
-      gsap.set([heroRef.current, serviceCategoriesRef.current, howItWorksRef.current, whyChooseRef.current, ctaRef.current], {
-        opacity: 0,
-        y: 30,
-      });
+      gsap.set(
+        [
+          heroRef.current,
+          serviceCategoriesRef.current,
+          howItWorksRef.current,
+          whyChooseRef.current,
+          ctaRef.current,
+        ],
+        {
+          opacity: 0,
+          y: 30,
+        }
+      );
 
       // Create timeline
       const tl = gsap.timeline();
@@ -52,30 +61,46 @@ const ServicesPage = () => {
         duration: 0.8,
         ease: "power2.out",
       })
-        .to(serviceCategoriesRef.current, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-        }, "-=0.4")
-        .to(howItWorksRef.current, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-        }, "-=0.4")
-        .to(whyChooseRef.current, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-        }, "-=0.4")
-        .to(ctaRef.current, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-        }, "-=0.4");
+        .to(
+          serviceCategoriesRef.current,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+          },
+          "-=0.4"
+        )
+        .to(
+          howItWorksRef.current,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+          },
+          "-=0.4"
+        )
+        .to(
+          whyChooseRef.current,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+          },
+          "-=0.4"
+        )
+        .to(
+          ctaRef.current,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+          },
+          "-=0.4"
+        );
 
       // Animate service cards with stagger
       gsap.fromTo(
@@ -136,7 +161,8 @@ const ServicesPage = () => {
     {
       icon: Boxes,
       title: "Early Years Support",
-      description: "EYFS/Montessori foundations, handwriting development, and age-appropriate lessons for curiosity and confidence.",
+      description:
+        "EYFS/Montessori foundations, handwriting development, and age-appropriate lessons for curiosity and confidence.",
       color: "text-primary",
       bgColor: "bg-primary/5",
       borderColor: "border-primary/20",
@@ -144,7 +170,8 @@ const ServicesPage = () => {
     {
       icon: BookOpen,
       title: "Elementary Tutoring",
-      description: "Numeracy, Literacy, English, and Science. Build strong foundations in reading, writing, and problem solving.",
+      description:
+        "Numeracy, Literacy, English, and Science. Build strong foundations in reading, writing, and problem solving.",
       color: "text-secondary",
       bgColor: "bg-secondary/5",
       borderColor: "border-secondary/20",
@@ -152,7 +179,8 @@ const ServicesPage = () => {
     {
       icon: ArrowUpToLine,
       title: "Middle School Prep",
-      description: "Advanced literacy and mathematics, study skills and exam preparation, support for transition into higher learning.",
+      description:
+        "Advanced literacy and mathematics, study skills and exam preparation, support for transition into higher learning.",
       color: "text-accent",
       bgColor: "bg-accent/5",
       borderColor: "border-accent/20",
@@ -160,7 +188,8 @@ const ServicesPage = () => {
     {
       icon: HandHeart,
       title: "SEN Support",
-      description: "Specialized strategies for learners with dyslexia, autism, or other SEN needs. Patient, individualized teaching that nurtures strengths.",
+      description:
+        "Specialized strategies for learners with dyslexia, autism, or other SEN needs. Patient, individualized teaching that nurtures strengths.",
       color: "text-primary",
       bgColor: "bg-primary/5",
       borderColor: "border-primary/20",
@@ -168,7 +197,8 @@ const ServicesPage = () => {
     {
       icon: FileCheck2,
       title: "Exam & Assessment Prep",
-      description: "Entrance exams and standardized test support, confidence-building practice sessions, structured learning plans for measurable results.",
+      description:
+        "Entrance exams and standardized test support, confidence-building practice sessions, structured learning plans for measurable results.",
       color: "text-secondary",
       bgColor: "bg-secondary/5",
       borderColor: "border-secondary/20",
@@ -212,9 +242,12 @@ const ServicesPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       {/* Hero Section */}
-      <section ref={heroRef} className="relative py-20 lg:py-32 overflow-hidden">
+      <section
+        ref={heroRef}
+        className="relative py-20 lg:py-32 overflow-hidden"
+      >
         {/* Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
@@ -224,12 +257,12 @@ const ServicesPage = () => {
 
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="heading-hero text-primary mb-6">
-              Our Services
-            </h1>
+            <h1 className="heading-hero text-primary mb-6">Our Services</h1>
             <p className="body-large text-foreground/80 mb-8 max-w-3xl mx-auto">
-              Personalized tutoring designed to help every child succeed, grow in confidence, and enjoy learning. 
-              I provide tailored support for early years, elementary, and middle school students, including children with special educational needs (SEN).
+              Personalized tutoring designed to help every child succeed, grow
+              in confidence, and enjoy learning. I provide tailored support for
+              early years, elementary, and middle school students, including
+              children with special educational needs (SEN).
             </p>
             <Button
               size="lg"
@@ -249,9 +282,12 @@ const ServicesPage = () => {
       <section ref={serviceCategoriesRef} className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="heading-section text-foreground mb-4">Service Categories</h2>
+            <h2 className="heading-section text-foreground mb-4">
+              Service Categories
+            </h2>
             <p className="body-large text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive educational support tailored to each child's unique learning journey
+              Comprehensive educational support tailored to each child&apos;s
+              unique learning journey
             </p>
           </div>
 
@@ -291,9 +327,12 @@ const ServicesPage = () => {
       <section ref={howItWorksRef} className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="heading-section text-foreground mb-4">How It Works</h2>
+            <h2 className="heading-section text-foreground mb-4">
+              How It Works
+            </h2>
             <p className="body-large text-muted-foreground max-w-2xl mx-auto">
-              A simple, proven process to get your child started on their learning journey
+              A simple, proven process to get your child started on their
+              learning journey
             </p>
           </div>
 
@@ -308,15 +347,21 @@ const ServicesPage = () => {
                   >
                     <div className="flex-shrink-0">
                       <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                        <span className="text-lg font-bold text-primary">{index + 1}</span>
+                        <span className="text-lg font-bold text-primary">
+                          {index + 1}
+                        </span>
                       </div>
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center space-x-3 mb-2">
                         <IconComponent className={`w-6 h-6 ${step.color}`} />
-                        <h3 className="heading-card text-card-foreground">{step.title}</h3>
+                        <h3 className="heading-card text-card-foreground">
+                          {step.title}
+                        </h3>
                       </div>
-                      <p className="body-regular text-muted-foreground">{step.description}</p>
+                      <p className="body-regular text-muted-foreground">
+                        {step.description}
+                      </p>
                     </div>
                   </div>
                 );
@@ -330,9 +375,12 @@ const ServicesPage = () => {
       <section ref={whyChooseRef} className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="heading-section text-foreground mb-4">Why Choose My Services?</h2>
+            <h2 className="heading-section text-foreground mb-4">
+              Why Choose My Services?
+            </h2>
             <p className="body-large text-muted-foreground max-w-2xl mx-auto">
-              Proven expertise and personalized approach that makes a real difference
+              Proven expertise and personalized approach that makes a real
+              difference
             </p>
           </div>
 
@@ -368,7 +416,8 @@ const ServicesPage = () => {
               Ready to help your child succeed?
             </h2>
             <p className="body-large text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Book a free consultation today and take the first step toward your child's academic growth.
+              Book a free consultation today and take the first step toward your
+              child&apos;s academic growth.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
               <Button

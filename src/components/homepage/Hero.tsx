@@ -103,6 +103,10 @@ const Hero = () => {
     }
   }, []);
 
+  const onGetStartedClick = () => {
+    console.log("Get Started clicked");
+  };
+
   return (
     <section
       ref={heroRef}
@@ -166,8 +170,8 @@ const Hero = () => {
           >
             <Button
               size="lg"
-              className="gradient-success text-white hover:shadow-lg transform hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold"
-              style={{ fontFamily: "var(--font-inter)" }}
+              onClick={onGetStartedClick}
+              className="gradient-primary text-white hover:shadow-lg transform hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold font-inter"
             >
               Book a Free Consultation
               <ArrowRight className="ml-2 h-5 w-5" />

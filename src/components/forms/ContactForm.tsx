@@ -3,9 +3,26 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Mail, User, Calendar, MessageSquare, Send, CheckCircle, AlertCircle } from "lucide-react";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import {
+  Mail,
+  User,
+  Calendar,
+  MessageSquare,
+  Send,
+  CheckCircle,
+  AlertCircle,
+  Phone,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -17,7 +34,74 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { contactSchema, type ContactFormValuesWithOptionalAge, SUBJECTS } from "@/lib/validations/contactSchema";
+import {
+  contactFormSchema,
+  type ContactFormValuesWithOptionalAge,
+  SUBJECTS,
+} from "@/lib/validations/contactSchema";
+
+// Add custom CSS for phone input styling
+const phoneInputStyles = `
+  .phone-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 2.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    border: 1px solid hsl(var(--input));
+    background-color: transparent;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    transition: all 0.3s ease;
+  }
+
+  .phone-input:focus-within {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    box-shadow: 0 0 0 1px hsl(var(--ring));
+    transform: scale(1.02);
+  }
+
+  .phone-input:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .phone-input .react-phone-number-input__icon {
+    margin-right: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .phone-input .react-phone-number-input__country {
+    margin-right: 0.5rem;
+  }
+
+  .phone-input .react-phone-number-input__input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    outline: none;
+  }
+
+  .phone-input .react-phone-number-input__input:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .phone-input,
+    .phone-input:hover,
+    .phone-input:focus-within {
+      transition: none;
+      transform: none;
+    }
+  }
+`;
 
 interface ContactFormProps {
   className?: string;
@@ -25,13 +109,16 @@ interface ContactFormProps {
 
 export function ContactForm({ className }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
   const form = useForm<ContactFormValuesWithOptionalAge>({
-    resolver: zodResolver(contactSchema),
+    resolver: zodResolver(contactFormSchema),
     defaultValues: {
       name: "",
       email: "",
+      phone: "",
       child_age: undefined,
       subjects: [],
       message: "",
@@ -40,59 +127,65 @@ export function ContactForm({ className }: ContactFormProps) {
 
   const onSubmit = async (values: ContactFormValuesWithOptionalAge) => {
     setIsSubmitting(true);
-    setSubmitStatus('idle');
+    setSubmitStatus("idle");
 
     try {
-      const response = await fetch('/api/contacts', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(values),
       });
 
       if (response.ok) {
-        setSubmitStatus('success');
+        setSubmitStatus("success");
         form.reset();
       } else {
-        setSubmitStatus('error');
+        setSubmitStatus("error");
       }
     } catch (error) {
-      setSubmitStatus('error');
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const toggleSubject = (subject: string) => {
-    const currentSubjects = form.getValues('subjects');
+    const currentSubjects = form.getValues("subjects");
     const newSubjects = currentSubjects.includes(subject)
-      ? currentSubjects.filter(s => s !== subject)
+      ? currentSubjects.filter((s) => s !== subject)
       : [...currentSubjects, subject];
-    
-    form.setValue('subjects', newSubjects as any); // Type assertion needed due to form library limitations
-    form.trigger('subjects');
+
+    form.setValue(
+      "subjects",
+      newSubjects as ContactFormValuesWithOptionalAge["subjects"]
+    );
+    form.trigger("subjects");
   };
 
-  const selectedSubjects = form.watch('subjects');
-  const messageLength = form.watch('message')?.length || 0;
+  const selectedSubjects = form.watch("subjects");
+  const messageLength = form.watch("message")?.length || 0;
 
   // Accessibility: Handle keyboard navigation for subject selection
   const handleSubjectKeyDown = (e: React.KeyboardEvent, subject: string) => {
-    if (e.key === 'Enter' || e.key === ' ') {
+    if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       toggleSubject(subject);
     }
   };
 
   return (
-    <Card className={`glass-card border-0 shadow-2xl hover-lift ${className}`}>
+    <>
+      <style>{phoneInputStyles}</style>
+      <Card className={`glass-card border-0 shadow-2xl hover-lift ${className}`}>
       <CardHeader className="text-center pb-6">
         <CardTitle className="heading-card text-primary mb-2">
           Get in Touch
         </CardTitle>
         <CardDescription className="body-regular text-muted-foreground max-w-md mx-auto">
-          Ready to help your child succeed? Send us a message and we'll get back to you within 24 hours.
+          Ready to help your child succeed? Send us a message and we&apos;ll get
+          back to you within 24 hours.
         </CardDescription>
       </CardHeader>
 
@@ -117,7 +210,10 @@ export function ContactForm({ className }: ContactFormProps) {
                       aria-describedby="name-description"
                     />
                   </FormControl>
-                  <FormDescription id="name-description" className="text-xs text-muted-foreground">
+                  <FormDescription
+                    id="name-description"
+                    className="text-xs text-muted-foreground"
+                  >
                     Please enter your full name
                   </FormDescription>
                   <FormMessage className="animate-slide-in-left" />
@@ -130,7 +226,10 @@ export function ContactForm({ className }: ContactFormProps) {
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                <FormItem
+                  className="animate-fade-in-up"
+                  style={{ animationDelay: "0.1s" }}
+                >
                   <FormLabel className="flex items-center gap-2 accent-text">
                     <Mail className="w-4 h-4 text-primary" />
                     Email Address
@@ -144,8 +243,45 @@ export function ContactForm({ className }: ContactFormProps) {
                       aria-describedby="email-description"
                     />
                   </FormControl>
-                  <FormDescription id="email-description" className="text-xs text-muted-foreground">
-                    We'll use this to respond to your message
+                  <FormDescription
+                    id="email-description"
+                    className="text-xs text-muted-foreground"
+                  >
+                    We&apos;ll use this to respond to your message
+                  </FormDescription>
+                  <FormMessage className="animate-slide-in-left" />
+                </FormItem>
+              )}
+            />
+
+            {/* Phone Number Field */}
+            <FormField
+              control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem
+                  className="animate-fade-in-up"
+                  style={{ animationDelay: "0.15s" }}
+                >
+                  <FormLabel className="flex items-center gap-2 accent-text">
+                    <Phone className="w-4 h-4 text-primary" />
+                    Phone Number
+                  </FormLabel>
+                  <FormControl>
+                    <PhoneInput
+                      {...field}
+                      international
+                      countryCallingCodeEditable={false}
+                      defaultCountry="NG"
+                      className="w-full phone-input"
+                      aria-describedby="phone-description"
+                    />
+                  </FormControl>
+                  <FormDescription
+                    id="phone-description"
+                    className="text-xs text-muted-foreground"
+                  >
+                    Please enter your phone number with country code
                   </FormDescription>
                   <FormMessage className="animate-slide-in-left" />
                 </FormItem>
@@ -157,10 +293,13 @@ export function ContactForm({ className }: ContactFormProps) {
               control={form.control}
               name="child_age"
               render={({ field }) => (
-                <FormItem className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                <FormItem
+                  className="animate-fade-in-up"
+                  style={{ animationDelay: "0.25s" }}
+                >
                   <FormLabel className="flex items-center gap-2 accent-text">
                     <Calendar className="w-4 h-4 text-primary" />
-                    Child's Age
+                    Child&apos;s Age
                   </FormLabel>
                   <FormControl>
                     <Input
@@ -170,12 +309,19 @@ export function ContactForm({ className }: ContactFormProps) {
                       placeholder="Enter child's age"
                       className="hover-lift transition-all duration-300 focus:scale-[1.02]"
                       {...field}
-                      onChange={(e) => field.onChange(e.target.value ? parseInt(e.target.value) : undefined)}
-                      value={field.value || ''}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        const parsed = value ? parseInt(value, 10) : undefined;
+                        field.onChange(isNaN(parsed!) ? undefined : parsed);
+                      }}
+                      value={field.value || ""}
                       aria-describedby="age-description"
                     />
                   </FormControl>
-                  <FormDescription id="age-description" className="text-xs text-muted-foreground">
+                  <FormDescription
+                    id="age-description"
+                    className="text-xs text-muted-foreground"
+                  >
                     Age range: 3-18 years
                   </FormDescription>
                   <FormMessage className="animate-slide-in-left" />
@@ -188,15 +334,21 @@ export function ContactForm({ className }: ContactFormProps) {
               control={form.control}
               name="subjects"
               render={() => (
-                <FormItem className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+                <FormItem
+                  className="animate-fade-in-up"
+                  style={{ animationDelay: "0.35s" }}
+                >
                   <FormLabel className="accent-text">
                     Subjects of Interest
                   </FormLabel>
-                  <FormDescription id="subjects-description" className="text-sm text-muted-foreground mb-3">
-                    Select all subjects you're interested in for your child
+                  <FormDescription
+                    id="subjects-description"
+                    className="text-sm text-muted-foreground mb-3"
+                  >
+                    Select all subjects you&apos;re interested in for your child
                   </FormDescription>
-                  <div 
-                    role="group" 
+                  <div
+                    role="group"
                     aria-labelledby="subjects-label"
                     aria-describedby="subjects-description"
                     className="grid grid-cols-2 md:grid-cols-3 gap-3"
@@ -205,14 +357,18 @@ export function ContactForm({ className }: ContactFormProps) {
                       <Button
                         key={subject}
                         type="button"
-                        variant={selectedSubjects.includes(subject) ? "default" : "outline"}
+                        variant={
+                          selectedSubjects.includes(subject)
+                            ? "default"
+                            : "outline"
+                        }
                         size="sm"
                         onClick={() => toggleSubject(subject)}
                         onKeyDown={(e) => handleSubjectKeyDown(e, subject)}
                         className={`transition-all duration-300 hover-scale ${
                           selectedSubjects.includes(subject)
-                            ? 'bg-primary text-primary-foreground shadow-lg'
-                            : 'hover:bg-primary/10 hover:text-primary hover:border-primary'
+                            ? "bg-primary text-primary-foreground shadow-lg"
+                            : "hover:bg-primary/10 hover:text-primary hover:border-primary"
                         }`}
                         aria-pressed={selectedSubjects.includes(subject)}
                         tabIndex={0}
@@ -231,7 +387,10 @@ export function ContactForm({ className }: ContactFormProps) {
               control={form.control}
               name="message"
               render={({ field }) => (
-                <FormItem className="animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+                <FormItem
+                  className="animate-fade-in-up"
+                  style={{ animationDelay: "0.45s" }}
+                >
                   <FormLabel className="flex items-center gap-2 accent-text">
                     <MessageSquare className="w-4 h-4 text-primary" />
                     Message
@@ -245,14 +404,20 @@ export function ContactForm({ className }: ContactFormProps) {
                     />
                   </FormControl>
                   <div className="flex justify-between items-center">
-                    <FormDescription id="message-description" className="text-xs text-muted-foreground">
+                    <FormDescription
+                      id="message-description"
+                      className="text-xs text-muted-foreground"
+                    >
                       Share any specific learning goals or challenges
                     </FormDescription>
-                    <span 
+                    <span
                       id="message-count"
                       className={`text-xs transition-colors duration-300 ${
-                        messageLength > 900 ? 'text-destructive' : 
-                        messageLength > 800 ? 'text-accent' : 'text-muted-foreground'
+                        messageLength > 900
+                          ? "text-destructive"
+                          : messageLength > 800
+                          ? "text-accent"
+                          : "text-muted-foreground"
                       }`}
                     >
                       {messageLength}/1000
@@ -264,7 +429,10 @@ export function ContactForm({ className }: ContactFormProps) {
             />
 
             {/* Submit Button */}
-            <div className="pt-4 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+            <div
+              className="pt-4 animate-fade-in-up"
+              style={{ animationDelay: "0.55s" }}
+            >
               <Button
                 type="submit"
                 size="lg"
@@ -274,7 +442,10 @@ export function ContactForm({ className }: ContactFormProps) {
               >
                 {isSubmitting ? (
                   <>
-                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" aria-hidden="true" />
+                    <div
+                      className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"
+                      aria-hidden="true"
+                    />
                     <span>Sending Message...</span>
                   </>
                 ) : (
@@ -290,28 +461,30 @@ export function ContactForm({ className }: ContactFormProps) {
             </div>
 
             {/* Status Messages */}
-            {submitStatus === 'success' && (
-              <div 
+            {submitStatus === "success" && (
+              <div
                 className="flex items-center gap-2 p-4 bg-secondary/10 border border-secondary/20 rounded-lg text-secondary animate-bounce-in"
                 role="alert"
                 aria-live="polite"
               >
                 <CheckCircle className="w-5 h-5" aria-hidden="true" />
                 <span className="body-regular">
-                  Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
+                  Thank you! Your message has been sent successfully. We&apos;ll
+                  get back to you within 24 hours.
                 </span>
               </div>
             )}
 
-            {submitStatus === 'error' && (
-              <div 
+            {submitStatus === "error" && (
+              <div
                 className="flex items-center gap-2 p-4 bg-destructive/10 border border-destructive/20 rounded-lg text-destructive animate-bounce-in"
                 role="alert"
                 aria-live="polite"
               >
                 <AlertCircle className="w-5 h-5" aria-hidden="true" />
                 <span className="body-regular">
-                  Sorry, there was an error sending your message. Please try again or contact us directly.
+                  Sorry, there was an error sending your message. Please try
+                  again or contact us directly.
                 </span>
               </div>
             )}
@@ -319,5 +492,6 @@ export function ContactForm({ className }: ContactFormProps) {
         </Form>
       </CardContent>
     </Card>
-  );
+  </>
+);
 }
