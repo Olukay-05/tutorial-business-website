@@ -10,7 +10,15 @@ First, install the dependencies:
 npm install
 ```
 
-Then, run the development server:
+Next, create your environment variables file by copying the example:
+
+```bash
+cp .env.example .env.local
+```
+
+Then, update the .env.local file with your actual API keys and configuration values. **Important**: Make sure to keep sensitive information like API keys in .env.local and never commit them to version control.
+
+Finally, run the development server:
 
 ```bash
 npm run dev

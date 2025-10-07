@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
 
     // Forward the request to the n8n webhook
     const n8nResponse = await fetch(
-      "http://localhost:5678/webhook/380e5511-ce2b-47d5-aa90-3df6445a5b2b",
+      process.env.N8N_WEBHOOK_URL || "http://localhost:5678/webhook/380e5511-ce2b-47d5-aa90-3df6445a5b2b",
       {
         method: "POST",
         headers: {
