@@ -9,6 +9,12 @@ import BenefitsSection from "@/components/consultation/BenefitsSection";
 import ConsultationTestimonials from "@/components/consultation/ConsultationTestimonials";
 import ClosingCTA from "@/components/consultation/ClosingCTA";
 import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+// Register the ScrollToPlugin
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollToPlugin);
+}
 
 const ConsultationPage = () => {
   const calendlyRef = useRef<HTMLDivElement>(null);

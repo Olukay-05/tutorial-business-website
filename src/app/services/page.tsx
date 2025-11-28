@@ -22,6 +22,7 @@ import {
   CheckCircle,
   ArrowRight,
 } from "lucide-react";
+import { BackgroundPattern } from "@/components/ui/background-pattern";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -250,9 +251,7 @@ const ServicesPage = () => {
       >
         {/* Background Elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-16 w-40 h-40 bg-secondary/10 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-accent/15 rounded-full blur-2xl"></div>
+          <BackgroundPattern variant="hero" seed="services-hero" intensity="medium" />
         </div>
 
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -269,7 +268,7 @@ const ServicesPage = () => {
               className="gradient-primary text-white hover:shadow-lg transform hover:scale-105 transition-all duration-300 px-8 py-4"
               asChild
             >
-              <Link href="/book-consultation">
+              <Link href="/consultation">
                 Book Free Consultation
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
@@ -406,8 +405,7 @@ const ServicesPage = () => {
       <section ref={ctaRef} className="py-20 relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-10 right-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 left-16 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+          <BackgroundPattern variant="section" seed="services-cta" intensity="light" />
         </div>
 
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -425,7 +423,7 @@ const ServicesPage = () => {
                 className="gradient-success text-white hover:shadow-lg transform hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold"
                 asChild
               >
-                <Link href="/book-consultation">
+                <Link href="/consultation">
                   Book a Free Consultation
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
