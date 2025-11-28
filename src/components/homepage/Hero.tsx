@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star } from "lucide-react";
+import { BackgroundPattern } from "@/components/ui/background-pattern";
 import gsap from "gsap";
 
 const Hero = () => {
@@ -116,9 +118,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-background"></div>
 
       {/* Decorative elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl transition-all duration-300 hover:bg-primary/20"></div>
-      <div className="absolute bottom-32 right-16 w-32 h-32 bg-secondary/10 rounded-full blur-2xl transition-all duration-300 hover:bg-secondary/20"></div>
-      <div className="absolute top-1/3 right-1/4 w-16 h-16 bg-accent/20 rounded-full blur-lg transition-all duration-300 hover:bg-accent/30"></div>
+      <BackgroundPattern variant="hero" seed="hero-page" intensity="strong" />
 
       {/* Main content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -146,7 +146,7 @@ const Hero = () => {
             ref={headlineRef}
             className="heading-hero text-primary mb-6 transition-colors duration-300 hover:text-primary/80"
           >
-            Expert 11+ & SEN Tutoring
+            Expert Academic & SEN Tutoring
             <br />
             <span className="text-foreground transition-colors duration-300 hover:text-primary">
               by Temitope Adeniyi
@@ -160,7 +160,8 @@ const Hero = () => {
           >
             Personalized learning plans for confident, successful students.
             <br />
-            Specializing in 11+ exams and supporting children with SEN.
+            Specializing in academic excellence and supporting children with
+            SEN.
           </p>
 
           {/* CTA Buttons */}
@@ -170,11 +171,13 @@ const Hero = () => {
           >
             <Button
               size="lg"
-              onClick={onGetStartedClick}
               className="gradient-primary text-white hover:shadow-lg transform hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold font-inter"
+              asChild
             >
-              Book a Free Consultation
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <Link href="/consultation">
+                Book a Free Consultation
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
 
             <a
@@ -205,7 +208,7 @@ const Hero = () => {
             <div className="flex items-center space-x-2 group">
               <div className="w-2 h-2 bg-accent rounded-full transition-all duration-300 group-hover:bg-accent/80"></div>
               <span className="transition-colors duration-300 group-hover:text-foreground">
-                11+ Expert
+                Academic Expert
               </span>
             </div>
           </div>

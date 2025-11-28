@@ -41,6 +41,15 @@ const config: Config = {
         "header-footer-bg": "var(--header-footer-bg)",
         "header-footer-text": "var(--header-footer-text)",
       },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-3px)" },
+        },
+      },
+      animation: {
+        float: "float 20s ease-in-out infinite",
+      },
     },
   },
   plugins: [tailwindcssAnimate],

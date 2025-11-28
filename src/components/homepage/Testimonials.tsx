@@ -3,6 +3,7 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Quote, Star } from "lucide-react";
+import { BackgroundPattern } from "@/components/ui/background-pattern";
 
 const Testimonials = () => {
   const testimonials = [
@@ -25,8 +26,9 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-background relative overflow-hidden">
+      <BackgroundPattern variant="section" seed="testimonials" intensity="light" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="heading-section text-foreground mb-4">
@@ -104,7 +106,7 @@ const Testimonials = () => {
               Join our community of successful families
             </p>
             <a
-              href="/testimonials"
+              href="/consultation#testimonials"
               className="text-primary hover:text-primary/80 font-semibold underline underline-offset-4 hover:underline-offset-8 transition-all duration-200 accent-text"
             >
               Read more success stories →

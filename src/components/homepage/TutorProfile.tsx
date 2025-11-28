@@ -7,10 +7,9 @@ import Image from "next/image";
 
 const TutorProfile = () => {
   const credentials = [
-    { icon: Award, text: "BA in Education" },
+    { icon: Award, text: "B.Sc. in Science Education" },
     { icon: BookOpen, text: "Specialist in SEN" },
     { icon: Users, text: "20+ Years Teaching Experience" },
-    { icon: CheckCircle, text: "11+ Exam Specialist" },
   ];
 
   return (
@@ -53,14 +52,19 @@ const TutorProfile = () => {
               {/* Bio */}
               <div className="space-y-6">
                 <p className="body-large text-foreground leading-relaxed">
-                  With over 20 years of experience in education, Temitope
-                  specializes in preparing students for 11+ exams and providing
-                  tailored support for children with Special Educational Needs.
+                  I hold a B.Sc. Ed in Biology Education with over 20 years of
+                  experience teaching early years, primary, and secondary
+                  students. I have hands-on expertise in EYFS, Montessori,
+                  British, and Nigerian curricula.
                 </p>
                 <p className="body-regular text-muted-foreground leading-relaxed">
-                  Her patient, encouraging approach helps students flourish,
-                  building not just academic skills but also the confidence
-                  needed for lifelong learning success.
+                  I also specialize in teaching children with special education
+                  needs and learning disabilities, providing patient,
+                  personalized support. I have helped children learn to read
+                  with ease, develop strong number sense leading to multiple
+                  academic awards, and supported SEND learners in achieving
+                  outstanding growth in comprehension, communication, math, and
+                  social skills.
                 </p>
               </div>
 
@@ -70,7 +74,11 @@ const TutorProfile = () => {
                   Qualifications & Expertise
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {credentials.map((credential, index) => {
+                  {[
+                    { icon: Award, text: "B.Sc. in Science Education" },
+                    { icon: BookOpen, text: "Specialist in SEN" },
+                    { icon: Users, text: "20+ Years Teaching Experience" },
+                  ].map((credential, index) => {
                     const IconComponent = credential.icon;
                     return (
                       <div

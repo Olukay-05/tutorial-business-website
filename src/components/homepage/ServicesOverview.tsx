@@ -8,33 +8,41 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Calculator, Heart, TrendingUp } from "lucide-react";
+import { BookOpen, Brain, Heart, MessageCircle } from "lucide-react";
 
 const ServicesOverview = () => {
   const services = [
     {
-      icon: Calculator,
-      title: "11+ Maths & English",
+      icon: Brain,
+      title: "Personalized Strategies",
       description:
-        "Comprehensive preparation for 11+ entrance exams with proven strategies and personalized practice materials.",
+        "Customized learning plans tailored to each student's unique learning style and academic goals.",
       color: "text-primary",
       bgColor: "bg-primary/5",
+    },
+    {
+      icon: BookOpen,
+      title: "Academic Tutoring",
+      description:
+        "Comprehensive academic tutoring and dedicated homework support to boost grades and understanding.",
+      color: "text-secondary",
+      bgColor: "bg-secondary/5",
     },
     {
       icon: Heart,
       title: "SEN Support",
       description:
-        "Specialized support for children with dyslexia, dyscalculia, and ASD, creating inclusive learning environments.",
-      color: "text-secondary",
-      bgColor: "bg-secondary/5",
-    },
-    {
-      icon: TrendingUp,
-      title: "Confidence Building",
-      description:
-        "Fostering positive learning experiences that build self-esteem and academic confidence in every student.",
+        "Specialized support for children with dyscalculia, dyslexia, and moderate ASD in an inclusive environment.",
       color: "text-accent",
       bgColor: "bg-accent/5",
+    },
+    {
+      icon: MessageCircle,
+      title: "Feedback & Support",
+      description:
+        "Continuous progress monitoring with ongoing communication and detailed feedback for parents.",
+      color: "text-bloomwise-success", // Assuming this color exists or use another
+      bgColor: "bg-green-500/5",
     },
   ];
 
@@ -54,19 +62,14 @@ const ServicesOverview = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {services.map((service, index) => {
             const IconComponent = service.icon;
-            // For tablet screens (md), center the third card (index 2)
-            const isThirdCardOnTablet =
-              index === 3
-                ? "md:col-start-1 md:col-end-3 md:mx-auto md:max-w-sm"
-                : "";
 
             return (
               <Card
                 key={index}
-                className={`group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0 shadow-lg bg-card backdrop-blur-sm animate-fade-in-up ${isThirdCardOnTablet}`}
+                className={`group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0 shadow-lg bg-card backdrop-blur-sm animate-fade-in-up`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <CardHeader className="text-center pb-4">
@@ -99,7 +102,7 @@ const ServicesOverview = () => {
                 Ready to get started?
               </p>
               <a
-                href="/book-consultation"
+                href="/consultation"
                 className="text-primary hover:text-primary/80 font-semibold text-lg underline underline-offset-4 hover:underline-offset-8 transition-all duration-200 accent-text"
               >
                 Schedule your free consultation today →

@@ -16,6 +16,8 @@ import Footer from "@/components/layout/Footer";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Card, CardContent } from "@/components/ui/card";
 
+import { BackgroundPattern } from "@/components/ui/background-pattern";
+
 export default function ContactPage() {
   const contactInfo = [
     {
@@ -81,15 +83,7 @@ export default function ContactPage() {
 
       <main className="relative overflow-hidden">
         {/* Background Elements */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
-        <div
-          className="absolute bottom-40 right-20 w-40 h-40 bg-secondary/5 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "2s" }}
-        ></div>
-        <div
-          className="absolute top-1/2 left-1/4 w-24 h-24 bg-accent/5 rounded-full blur-2xl animate-pulse"
-          style={{ animationDelay: "4s" }}
-        ></div>
+        <BackgroundPattern variant="section" seed="contact-page" intensity="medium" />
 
         {/* Hero Section */}
         <section className="relative py-20 lg:py-32">

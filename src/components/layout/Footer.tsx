@@ -15,10 +15,14 @@ const Footer = () => {
   const contactInfo = [
     {
       icon: Mail,
-      text: "info@bloomwisetutoring.com",
-      href: "mailto:info@bloomwisetutoring.com",
+      text: "richblenconsult@gmail.com",
+      href: "mailto:richblenconsult@gmail.com",
     },
-    { icon: Phone, text: "+234 803 827 7651", href: "tel:+2348038277651" },
+    {
+      icon: Phone,
+      text: "07085029198 (WhatsApp)",
+      href: "https://wa.me/2347085029198",
+    },
     { icon: MapPin, text: "Lagos, Nigeria", href: "#" },
   ];
 
@@ -44,8 +48,8 @@ const Footer = () => {
                 RichBlend Consult
               </h3>
               <p className="body-regular text-footer-text leading-relaxed max-w-md">
-                Expert 11+ and SEN tutoring by Temitope Adeniyi. Personalized
-                learning plans for confident, successful students.
+                Result- driven academic tutoring with personalised learning
+                plans for confident, successful students.
               </p>
             </div>
 
