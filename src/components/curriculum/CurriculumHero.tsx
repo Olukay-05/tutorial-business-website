@@ -65,7 +65,7 @@ const CurriculumHero: React.FC = () => {
             <div className="flex items-center space-x-2 group hover:scale-105 transition-transform duration-300">
               <BookOpen className="w-5 h-5 text-primary group-hover:text-primary/80 transition-colors" />
               <span className="group-hover:text-foreground transition-colors">
-                5 Core Subject Areas
+                Core Subject Areas
               </span>
             </div>
             <div className="flex items-center space-x-2 group hover:scale-105 transition-transform duration-300">
