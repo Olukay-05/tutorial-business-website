@@ -161,7 +161,7 @@ const Footer = () => {
           <Separator className="bg-border mb-8" />
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-footer-text body-regular text-center md:text-left">
-              © 2025 Bloomwise Tutoring. All rights reserved.
+              © 2026 RichBlend Consult. All rights reserved.
             </p>
             <div className="flex items-center space-x-6 text-sm text-footer-text">
               <span>Made with ❤️ for educational excellence</span>

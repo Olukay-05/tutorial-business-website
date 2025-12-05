@@ -93,6 +93,39 @@ const phoneInputStyles = `
     box-shadow: none;
   }
 
+  /* Styling for the phone input dropdown */
+  .react-phone-number-input__select {
+    background-color: hsl(var(--background)) !important;
+    color: hsl(var(--foreground)) !important;
+    border: 1px solid hsl(var(--border)) !important;
+    border-radius: 0.375rem !important;
+    padding: 0.5rem !important;
+    font-size: 0.875rem !important;
+  }
+
+  .react-phone-number-input__select:focus {
+    outline: 2px solid hsl(var(--ring)) !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 1px hsl(var(--ring)) !important;
+  }
+
+  .react-phone-number-input__select option {
+    background-color: hsl(var(--card)) !important;
+    color: hsl(var(--foreground)) !important;
+    padding: 0.5rem !important;
+  }
+
+  .react-phone-number-input__select option:hover {
+    background-color: hsl(var(--primary)) !important;
+    color: hsl(var(--primary-foreground)) !important;
+  }
+
+  .react-phone-number-input__select option:checked,
+  .react-phone-number-input__select option:active {
+    background-color: hsl(var(--primary)) !important;
+    color: hsl(var(--primary-foreground)) !important;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .phone-input,
     .phone-input:hover,
@@ -146,6 +179,7 @@ export function ContactForm({ className }: ContactFormProps) {
       }
     } catch (error) {
       setSubmitStatus("error");
+      console.error("Contact form submission error:", error);
     } finally {
       setIsSubmitting(false);
     }

@@ -63,8 +63,10 @@ export type ContactFormValues = z.infer<typeof contactSchema>;
 export type ContactFormValuesWithOptionalAge = z.infer<typeof contactFormSchema>;
 
 export const SUBJECTS = [
-  "11+ Maths",
-  "11+ English", 
+  "Maths",
+  "English",
+  "Numeracy",
+  "Literacy",
   "SEN Support",
   "Phonics",
   "Science",

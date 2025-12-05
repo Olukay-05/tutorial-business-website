@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import Link from "next/link";
 import {
   Calculator,
   BookOpen,
@@ -102,7 +103,7 @@ const CurriculumPage: React.FC = () => {
     description: "Personalized strategies for diverse learning needs",
     icon: <Heart className="w-6 h-6" />,
     points: [
-      "Personalized teaching strategies for learners with dyslexia, autism, or other SEN needs",
+      "Personalized teaching strategies for learners with dyslexia, dyscalculia, and those mildly on the spectrum",
       "Reading intervention support for early readers and struggling pupils",
       "Focus on confidence, curiosity, and individual strengths",
       "Proven methods to help learners read fluently, spell confidently, and excel in comprehension",
@@ -129,7 +130,7 @@ const CurriculumPage: React.FC = () => {
     },
     {
       title: "Experience",
-      description: "Experienced in leading and teaching early years education",
+      description: "Experienced in leading and teaching early years, elementary and middle school",
       icon: <Users className="w-6 h-6" />,
     },
   ];
@@ -282,6 +283,19 @@ const CurriculumPage: React.FC = () => {
 
             {/* Call to Action Quote */}
             <CalloutQuote />
+
+            {/* CTA Button after the quote */}
+            <div className="mt-16 flex justify-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-transform"
+              >
+                Contact Me Today
+                <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </section>
       </main>

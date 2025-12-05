@@ -105,9 +105,6 @@ const Hero = () => {
     }
   }, []);
 
-  const onGetStartedClick = () => {
-    console.log("Get Started clicked");
-  };
 
   return (
     <section

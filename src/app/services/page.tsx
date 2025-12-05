@@ -14,7 +14,6 @@ import {
   BookOpen,
   ArrowUpToLine,
   HandHeart,
-  FileCheck2,
   CalendarClock,
   FileCog,
   MonitorDot,
@@ -172,14 +171,14 @@ const ServicesPage = () => {
       icon: BookOpen,
       title: "Elementary Tutoring",
       description:
-        "Numeracy, Literacy, English, and Science. Build strong foundations in reading, writing, and problem solving.",
+        "Numeracy, Maths, Literacy, English, and Science. Build strong foundations in reading, writing, and problem solving.",
       color: "text-secondary",
       bgColor: "bg-secondary/5",
       borderColor: "border-secondary/20",
     },
     {
       icon: ArrowUpToLine,
-      title: "Middle School Prep",
+      title: "Middle School",
       description:
         "Advanced literacy and mathematics, study skills and exam preparation, support for transition into higher learning.",
       color: "text-accent",
@@ -190,20 +189,20 @@ const ServicesPage = () => {
       icon: HandHeart,
       title: "SEN Support",
       description:
-        "Specialized strategies for learners with dyslexia, autism, or other SEN needs. Patient, individualized teaching that nurtures strengths.",
+        "Specialized strategies for learners with dyslexia, dyscalculia, and moderately on the spectrum. Using patient, individualized teaching that nurtures strengths.",
       color: "text-primary",
       bgColor: "bg-primary/5",
       borderColor: "border-primary/20",
     },
-    {
-      icon: FileCheck2,
-      title: "Exam & Assessment Prep",
-      description:
-        "Entrance exams and standardized test support, confidence-building practice sessions, structured learning plans for measurable results.",
-      color: "text-secondary",
-      bgColor: "bg-secondary/5",
-      borderColor: "border-secondary/20",
-    },
+    // {
+    //   icon: FileCheck2,
+    //   title: "Exam & Assessment Prep",
+    //   description:
+    //     "Entrance exams and standardized test support, confidence-building practice sessions, structured learning plans for measurable results.",
+    //   color: "text-secondary",
+    //   bgColor: "bg-secondary/5",
+    //   borderColor: "border-secondary/20",
+    // },
   ];
 
   const processSteps = [
@@ -234,7 +233,7 @@ const ServicesPage = () => {
   ];
 
   const benefits = [
-    "Years of preschool leadership and online tutoring experience",
+    "Years of teaching and online tutoring expertise",
     "Patient, personalized support for diverse learners",
     "Proven success with early readers and SEN pupils",
     "Build long-term confidence and curiosity in learning",
@@ -290,7 +289,7 @@ const ServicesPage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {serviceCategories.map((service, index) => {
               const IconComponent = service.icon;
               return (

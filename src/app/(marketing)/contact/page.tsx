@@ -23,14 +23,14 @@ export default function ContactPage() {
     {
       icon: Mail,
       label: "Email",
-      value: "info@bloomwisetutoring.com",
-      href: "mailto:info@bloomwisetutoring.com",
+      value: "richblendconsult@gmail.com",
+      href: "mailto:richblendconsult@gmail.com",
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+234 803 827 7651",
-      href: "tel:+2348038277651",
+      value: "+234 7085029198",
+      href: "tel:+2347085029198",
     },
     {
       icon: MapPin,
