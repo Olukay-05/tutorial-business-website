@@ -14,7 +14,6 @@ import {
   BookOpen,
   ArrowUpToLine,
   HandHeart,
-  FileCheck2,
   CalendarClock,
   FileCog,
   MonitorDot,

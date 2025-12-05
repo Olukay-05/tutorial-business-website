@@ -2,15 +2,10 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Award, BookOpen, Users } from "lucide-react";
+import { Award, BookOpen, Users } from "lucide-react";
 import Image from "next/image";
 
 const TutorProfile = () => {
-  const credentials = [
-    { icon: Award, text: "B.Sc. in Science Education" },
-    { icon: BookOpen, text: "Specialist in SEN" },
-    { icon: Users, text: "20+ Years Teaching Experience" },
-  ];
 
   return (
     <section className="py-20 bg-card">

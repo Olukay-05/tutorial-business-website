@@ -179,6 +179,7 @@ export function ContactForm({ className }: ContactFormProps) {
       }
     } catch (error) {
       setSubmitStatus("error");
+      console.error("Contact form submission error:", error);
     } finally {
       setIsSubmitting(false);
     }
