@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
                     <strong>Last updated:</strong> December 5, 2025
                   </p>
                   <p className="body-large text-foreground mb-4">
-                    RichBlend Consult ("we", "us", or "our") operates the RichBlend Consult website and provides educational tutoring services.
+                    RichBlend Consult (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) operates the RichBlend Consult website and provides educational tutoring services.
                     We are committed to protecting your privacy and personal information. This Privacy Policy explains how we collect, use,
                     disclose, and safeguard your information when you visit our website and use our services.
                   </p>
@@ -35,7 +35,7 @@ export default function PrivacyPolicyPage() {
                     We collect information you provide directly to us when you:
                   </p>
                   <ul className="list-disc pl-6 mb-4 body-regular text-foreground space-y-2">
-                    <li>Contact us through our website's contact form</li>
+                    <li>Contact us through our website&apos;s contact form</li>
                     <li>Book a consultation or tutoring session</li>
                     <li>Subscribe to our newsletters or communications</li>
                     <li>Communicate with us via email or other means</li>
@@ -44,7 +44,7 @@ export default function PrivacyPolicyPage() {
                   <h3 className="heading-card text-primary mt-4 mb-2">Types of Information Collected:</h3>
                   <ul className="list-disc pl-6 mb-4 body-regular text-foreground space-y-2">
                     <li><strong>Personal Information:</strong> Your name, email address, phone number</li>
-                    <li><strong>Student Information:</strong> Your child's age, subjects of interest, educational needs</li>
+                    <li><strong>Student Information:</strong> Your child&apos;s age, subjects of interest, educational needs</li>
                     <li><strong>Communication Information:</strong> Messages you send through our contact forms</li>
                     <li><strong>Technical Information:</strong> IP address, browser type, device information (collected automatically)</li>
                   </ul>
@@ -59,7 +59,7 @@ export default function PrivacyPolicyPage() {
                     <li>Provide and improve our tutoring services</li>
                     <li>Respond to your inquiries and requests</li>
                     <li>Communicate with you about our services</li>
-                    <li>Personalize your child's learning experience</li>
+                    <li>Personalize your child&apos;s learning experience</li>
                     <li>Process consultations and tutoring sessions</li>
                     <li>Send educational materials and updates (with your consent)</li>
                     <li>Improve our website and services</li>
@@ -74,7 +74,7 @@ export default function PrivacyPolicyPage() {
                     information with:
                   </p>
                   <ul className="list-disc pl-6 mb-4 body-regular text-foreground space-y-2">
-                    <li><strong>Service Providers:</strong> Third-party vendors who help us operate our website and provide services 
+                    <li><strong>Service Providers:</strong> Third-party vendors who help us operate our website and provide services
                       (e.g., email service providers like Resend for sending confirmations)</li>
                     <li><strong>Legal Compliance:</strong> When required by law, court order, or to exercise our legal rights</li>
                     <li><strong>Protection of Rights:</strong> To protect our rights, property, or safety, and that of our users</li>
@@ -127,7 +127,7 @@ export default function PrivacyPolicyPage() {
                 </section>
 
                 <section>
-                  <h2 className="heading-section text-primary mb-4">Children's Privacy</h2>
+                  <h2 className="heading-section text-primary mb-4">Children&apos;s Privacy</h2>
                   <p className="body-regular text-foreground mb-4">
                     Our services are not intended for children under the age of 13. We do not knowingly collect personal 
                     information from children under 13. When we collect information about children, it is provided by 
@@ -184,8 +184,8 @@ export default function PrivacyPolicyPage() {
                 <section>
                   <h2 className="heading-section text-primary mb-4">Changes to This Privacy Policy</h2>
                   <p className="body-regular text-foreground mb-4">
-                    We may update this Privacy Policy periodically. When we make changes, we will update the "Last updated" 
-                    date at the top of this policy. We encourage you to review this Privacy Policy regularly to stay 
+                    We may update this Privacy Policy periodically. When we make changes, we will update the &quot;Last updated&quot;
+                    date at the top of this policy. We encourage you to review this Privacy Policy regularly to stay
                     informed about how we are protecting your information.
                   </p>
                   <p className="body-regular text-foreground mb-4">
