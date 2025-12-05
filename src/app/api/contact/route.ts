@@ -1,5 +1,8 @@
 import { NextRequest } from "next/server";
 import { contactFormSchema } from "@/lib/validations/contactSchema";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
@@ -7,29 +10,29 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validatedData = contactFormSchema.parse(body);
 
-    // Forward the request to the n8n webhook
-    const n8nResponse = await fetch(
-      process.env.N8N_WEBHOOK_URL || "http://localhost:5678/webhook/380e5511-ce2b-47d5-aa90-3df6445a5b2b",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(validatedData),
-      }
-    );
+    // Send email using Resend
+    const { data, error } = await resend.emails.send({
+      from: "onboarding@resend.dev", // You can replace this with your domain
+      to: process.env.CONTACT_EMAIL || "richblendconsult@gmail.com", // The email address to receive the form data
+      subject: "New Contact Form Submission from BloomWise Tutoring",
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${validatedData.name}</p>
+        <p><strong>Email:</strong> ${validatedData.email}</p>
+        <p><strong>Phone:</strong> ${validatedData.phone || 'Not provided'}</p>
+        <p><strong>Child's Age:</strong> ${validatedData.child_age || 'Not provided'}</p>
+        <p><strong>Subjects of Interest:</strong> ${validatedData.subjects.join(', ')}</p>
+        <p><strong>Message:</strong> ${validatedData.message}</p>
+      `,
+    });
 
-    if (!n8nResponse.ok) {
-      console.error(
-        "n8n webhook error:",
-        n8nResponse.status,
-        n8nResponse.statusText
-      );
+    if (error) {
+      console.error("Resend error:", error);
       return new Response(
         JSON.stringify({
           success: false,
-          error: "Failed to submit contact form",
-          details: `n8n webhook returned ${n8nResponse.status}`,
+          error: "Failed to send email",
+          details: error.message,
         }),
         {
           status: 500,
@@ -39,7 +42,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Return success response
-    return new Response(JSON.stringify({ success: true }), {
+    return new Response(JSON.stringify({ success: true, id: data?.id }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
